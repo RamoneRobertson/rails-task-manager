@@ -1,8 +1,19 @@
 <div class="container">
-<h1>Tasks</h1>
-<ul>
-  <% @tasks.each do |task| %>
-    <li><%= link_to task.title, task_path(task) %></li>
-  <% end %>
-</ul>
+  <h1>My Tasks</h1>
+  <div class="row">
+    <div class="col-2">
+        <% @tasks.each do |task| %>
+        <div class="items d-flex justify-content-between">
+          <div>
+            <i class="<%= task.completed ? "fa-solid fa-square-check" : "fa-regular fa-square" %> mr-3" ></i>
+            <%= link_to task.title, task_path(task), style: 'text-decoration: none' %>
+          </div>
+          <i class="fa-solid fa-trash-can"></i>
+        </div>
+        <% end %>
+    </div>
+  </div>
+  <hr class="solid">
+  <i class="fa-solid fa-plus mr-3"></i>
+  <%= link_to 'Add Task', tasks_new_path, style: 'text-decoration: none' %>
 </div>
